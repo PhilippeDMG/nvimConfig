@@ -88,16 +88,6 @@ return {
 			["tailwindcss"] = function()
 				lspconfig["tailwindcss"].setup({})
 			end,
-			["css-lsp"] = function()
-				lspconfig["css-lsp"].setup({
-					capabilities = capabilities,
-					filetypes = {
-						"html",
-						"css",
-						"svelte",
-					},
-				})
-			end,
 			["svelte"] = function()
 				-- configure svelte server
 				lspconfig["svelte"].setup({

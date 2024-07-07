@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+
 -- and to suppress any output when the mapping is executed.
 vim.api.nvim_set_keymap("i", "jk", "<ESC>", { noremap = true, silent = true }) --options to ensure that the mapping is not recursively mapped
 vim.api.nvim_set_keymap("i", "JK", "<ESC>", { noremap = true, silent = true }) --options to ensure that the mapping is not recursively mapped
@@ -17,15 +18,26 @@ vim.api.nvim_set_keymap("n", "<leader>tn", "<cmd>tabn<CR>", { noremap = true, si
 vim.api.nvim_set_keymap("n", "<leader>tp", "<cmd>tabp<CR>", { noremap = true, silent = true }) -- go to previous tab
 vim.api.nvim_set_keymap("n", "<leader>tf", "<cmd>tabnew %<CR>", { noremap = true, silent = true }) -- open current buffer in new tab
 
+-- greatest remap ever
+vim.api.nvim_set_keymap("v", "<leader>p", '"_dP', { noremap = true, silent = true })
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 -- Toggle word wrapping
 vim.api.nvim_set_keymap("n", "<leader>z", ":set wrap!<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "J", "", { noremap = true, silent = true })
 
--- vim.api.nvim_set_keymap("n", "K", "<cmd>lua move_line_up_by_two()<CR>", { noremap = true, silent = true })
---
--- function move_line_up_by_two()
--- 	-- Enter visual mode and select the current line
--- 	vim.cmd("normal! V")
--- 	-- Move the selected line up by 2 lines
--- 	vim.cmd(":m-2")
--- end
+-- console.log
+vim.api.nvim_set_keymap("n", "<leader>p", ":lua InsertConsoleLog()<CR>", {
+	noremap = true,
+})
+
+function InsertConsoleLog()
+	-- Move the cursor to the end of the line
+	vim.api.nvim_win_set_cursor(0, { vim.fn.line("."), vim.fn.col(".") + 1 })
+	-- Insert "console.log()"
+	local _, cols = unpack(vim.api.nvim_win_get_cursor(0))
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("iconsole.log('')", true, false, true), "n", true)
+	-- Move the cursor inside the parentheses
+	vim.api.nvim_win_set_cursor(0, { vim.fn.line("."), vim.fn.col(".") - 3 }) -- Adjust the number based on your needs
+end

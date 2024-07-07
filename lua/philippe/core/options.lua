@@ -1,6 +1,12 @@
 vim.cmd("let g:netrw_liststyle = 3")
 
+vim.o.background = ""
+if vim.g.neovide then
+	vim.g.neovide_transparency = 0.5
+end
 local opt = vim.opt
+
+opt.guicursor = ""
 
 opt.relativenumber = true
 opt.number = true
@@ -12,6 +18,7 @@ opt.expandtab = true --expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
 opt.wrap = false
+opt.linebreak = true
 
 -- search settings
 opt.ignorecase = true
@@ -23,7 +30,7 @@ opt.cursorline = true
 -- (have to use iterm2 or any other true color terminal)
 
 opt.termguicolors = true
-opt.background = "dark"
+opt.background = ""
 opt.signcolumn = "yes"
 
 -- backspace
