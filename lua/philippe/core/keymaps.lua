@@ -27,6 +27,12 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Toggle word wrapping
 vim.api.nvim_set_keymap("n", "<leader>z", ":set wrap!<CR>", { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap("n", "gdv", ":DiffviewOpen<CR>", { noremap = true, silent = true }) --options to ensure that the mapping is not recursively mapped
+vim.api.nvim_set_keymap("n", "gdc", ":DiffviewClose<CR>", { noremap = true, silent = true }) --options to ensure that the mapping is not recursively mapped
+
+vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+
 -- console.log
 vim.api.nvim_set_keymap("n", "<leader>p", ":lua InsertConsoleLog()<CR>", {
 	noremap = true,

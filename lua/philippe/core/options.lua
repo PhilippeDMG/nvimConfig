@@ -26,9 +26,9 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 
 opt.cursorline = true
 
--- turn on termguicolors for tokyonight colorscheme to work
 -- (have to use iterm2 or any other true color terminal)
 
+-- turn on termguicolors for tokyonight colorscheme to work
 opt.termguicolors = true
 opt.background = ""
 opt.signcolumn = "yes"
